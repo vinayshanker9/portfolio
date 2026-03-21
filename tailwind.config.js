@@ -1,15 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        card: "var(--card)",
+        accent: "#6366f1",
+        secondary: "#22d3ee",
+        success: "#22c55e",
+        warning: "#f59e0b",
+        muted: "#64748b",
+        textPrimary: "var(--foreground)",
+        textMuted: "var(--text-muted)",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+        heading: ["var(--font-space-grotesk)"],
+        mono: ["var(--font-jetbrains-mono)"],
       },
     },
   },
