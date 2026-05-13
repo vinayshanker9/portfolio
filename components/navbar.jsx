@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { personalData } from "@/utils/data/personal-data";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -66,6 +67,12 @@ export default function Navbar() {
                   {section}
                 </button>
               ))}
+              <a
+                href={`mailto:${personalData.email}`}
+                className="text-sm font-medium px-4 py-2 rounded-full bg-accent/10 text-accent border border-accent/20 hover:bg-accent hover:text-white transition-all shadow-[0_0_15px_rgba(99,102,241,0.15)]"
+              >
+                Hire Me
+              </a>
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors text-foreground"
@@ -118,6 +125,13 @@ export default function Navbar() {
                   {section}
                 </button>
               ))}
+              <a
+                href={`mailto:${personalData.email}`}
+                className="block w-full text-left px-3 py-3 rounded-md text-base font-medium text-accent bg-accent/5 border border-accent/10 hover:bg-accent/10 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Hire Me
+              </a>
             </div>
           </motion.div>
         )}
