@@ -24,6 +24,6 @@ export const projectsData = [
     tools: ["React", "FastAPI", "Supabase", "Groq", "FastEmbed", "Python", "Llama 3"],
     badge: "AI Application",
     github: "https://github.com/vinayshanker9/Solo-Bot",
-    demo: "https://solo-o323aoujb-varun-sahukars-projects.vercel.app"
+    demo: "https://solobot.netlify.app/"
   }
 ];
