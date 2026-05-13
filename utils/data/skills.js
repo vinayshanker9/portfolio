@@ -12,10 +12,10 @@ export const skillsData = {
     "MySQL", "PostgreSQL", "MongoDB"
   ],
   ai: [
-    "Prompt Engineering", "LLM Integration", "AI Agents"
+    "Prompt Engineering", "LLM Integration", "Spring AI"
   ],
   tools: [
-    "Git", "GitHub", "Docker", "Kubernetes", "AWS", "Jenkins", 
-    "n8n", "Figma", "Postman", "Linux", "IntelliJ IDEA", "VS Code"
+    "Git", "GitHub", "Docker", "Kubernetes", "AWS", "Jenkins",
+    "n8n", "Google Stitch", "Postman"
   ]
 };
