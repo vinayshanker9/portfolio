@@ -16,23 +16,5 @@ export const projectsData = [
     badge: "Backend Microservices",
     github: "https://github.com/vinayshanker9/ecommerce-order-engine",
     demo: "#"
-  },
-  {
-    id: 3,
-    name: "Real-Time Collaborative Code Editor 🛠️ (Upcoming)",
-    description: "A Google Docs-style collaborative IDE natively supporting multi-cursor live editing. Implemented Conflict-free Replicated Data Types (CRDTs) to handle concurrent edits via Spring WebSockets and a React frontend.",
-    tools: ["React.js", "Spring Boot", "WebSockets", "CRDTs", "Tailwind CSS", "Redis Pub/Sub"],
-    badge: "Upcoming • Full Stack",
-    github: "#",
-    demo: "#"
-  },
-  {
-    id: 4,
-    name: "Scalable Video Streaming Platform 🎥 (Upcoming)",
-    description: "A YouTube-clone full-stack application supporting asynchronous video transcoding (using FFmpeg) into HLS format for adaptive bitrate streaming. Utilized AWS S3 for blob storage and a Next.js client for playback.",
-    tools: ["Next.js", "Spring Boot", "AWS S3", "FFmpeg", "HLS", "PostgreSQL", "Docker"],
-    badge: "Upcoming • Full Stack",
-    github: "#",
-    demo: "#"
   }
 ];
