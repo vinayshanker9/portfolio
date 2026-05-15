@@ -26,7 +26,11 @@ const PARTICLE_CONFIGS = [
 export const FlowingTrails = ({ color = "#6366f1", count = 5 }) => {
   const trails = TRAIL_CONFIGS.slice(0, Math.min(count, TRAIL_CONFIGS.length));
   return (
+    // "hidden md:block" → display:none on mobile. Browsers PAUSE all CSS
+    // animations on display:none elements, so mobile gets zero GPU cost.
+    // Desktop is visually identical to the original.
     <div
+      className="hidden md:block"
       style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0, contain: "strict" }}
     >
       <svg width="100%" height="100%" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +65,10 @@ export const FlowingTrails = ({ color = "#6366f1", count = 5 }) => {
 export const FloatingParticles = ({ color = "#6366f1", count = 10 }) => {
   const particles = PARTICLE_CONFIGS.slice(0, Math.min(count, PARTICLE_CONFIGS.length));
   return (
-    <div style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0, overflow: "hidden", contain: "strict" }}>
+    <div
+      className="hidden md:block"
+      style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0, overflow: "hidden", contain: "strict" }}
+    >
       {particles.map((p, i) => (
         <div
           key={i}
@@ -112,7 +119,10 @@ export const DigitalGrid = () => (
 );
 
 export const InteractiveGlow = () => (
-  <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", overflow: "hidden", contain: "strict" }}>
+  <div
+    className="hidden md:block"
+    style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", overflow: "hidden", contain: "strict" }}
+  >
     <div
       style={{
         position: "absolute",

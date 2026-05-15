@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Github, Linkedin, ExternalLink, ArrowRight } from "lucide-react";
+import { Mail, MapPin, Github, Linkedin, ArrowRight } from "lucide-react";
 import { personalData } from "@/utils/data/personal-data";
 import { InteractiveGlow, FlowingTrails } from "./background-effects";
 
@@ -42,8 +42,9 @@ const contactLinks = [
     value: "github.com/vinayshanker9",
     href: personalData.github,
     icon: Github,
-    color: "#e2e8f0",
-    glow: "rgba(226,232,240,0.2)",
+    color: "var(--github-color)",
+    colorHex: "#6e7681",
+    glow: "rgba(87,96,106,0.3)",
     description: "Explore my open-source work",
   },
   {
@@ -93,7 +94,10 @@ export default function Contact() {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
         >
-          {contactLinks.map(({ id, label, value, href, icon: Icon, color, glow, description }) => (
+          {contactLinks.map(({ id, label, value, href, icon: Icon, color, colorHex, glow, description }) => {
+            // For CSS-variable colors (github), use colorHex for template literals
+            const hexColor = colorHex ?? color;
+            return (
             <motion.div
               key={id}
               variants={ITEM}
@@ -113,7 +117,7 @@ export default function Contact() {
                 whileHover={{ rotate: [0, -10, 10, 0], scale: 1.15 }}
                 transition={{ duration: 0.35 }}
                 className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 border border-white/10"
-                style={{ backgroundColor: `${color}18` }}
+                style={{ backgroundColor: `${hexColor}22` }}
               >
                 <Icon size={22} style={{ color }} />
               </motion.div>
@@ -147,10 +151,11 @@ export default function Contact() {
               {/* Bottom accent line */}
               <div
                 className="mt-5 h-px w-0 group-hover:w-full rounded-full transition-all duration-500"
-                style={{ background: `linear-gradient(90deg, ${color}, transparent)` }}
+                style={{ background: `linear-gradient(90deg, ${hexColor}, transparent)` }}
               />
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {/* CTA */}
