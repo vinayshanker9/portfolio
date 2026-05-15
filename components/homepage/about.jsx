@@ -3,11 +3,14 @@
 import { motion } from "framer-motion";
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
+import { FlowingTrails, FloatingParticles } from "./background-effects";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-background relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 bg-background relative z-10 overflow-hidden">
+      <FloatingParticles count={8} color="#6366f1" />
+      <FlowingTrails color="#6366f1" count={4} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Text Content */}
           <motion.div
@@ -43,8 +46,8 @@ export default function About() {
             className="flex-1 order-1 md:order-2 flex justify-center md:justify-end w-full max-w-sm md:max-w-md"
           >
             <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ y: [0, -15, 0], rotate: [0, 2, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               className="relative group w-64 md:w-80 aspect-[3/4]"
             >
               <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl bg-card">

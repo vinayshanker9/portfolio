@@ -8,7 +8,7 @@ import Contact from "@/components/homepage/contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-accent/30 selection:text-accent">
+    <main className="min-h-screen bg-transparent text-foreground selection:bg-accent/30 selection:text-accent">
       <Navbar />
       <HeroSection />
       <About />

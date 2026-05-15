@@ -16,7 +16,9 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
+          <div className="relative min-h-screen">
+            <div className="relative z-10">{children}</div>
+          </div>
         </ThemeProvider>
       </body>
     </html>

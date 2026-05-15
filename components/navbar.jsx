@@ -48,24 +48,32 @@ export default function Navbar() {
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-md shadow-sm dark:shadow-none border-b border-gray-200 dark:border-gray-800" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0 cursor-pointer flex items-center pr-4 group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 mr-2 group-hover:bg-accent/20 transition-all shadow-[0_0_15px_rgba(99,102,241,0.15)]">
-              <span className="text-accent font-mono font-bold text-sm tracking-tighter">VS</span>
+          <motion.div 
+            whileHover={{ scale: 1.05, x: 5 }}
+            className="flex-shrink-0 cursor-pointer flex items-center pr-4 group" 
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/30 mr-2 group-hover:bg-blue-500/20 transition-all shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+              <span className="text-blue-400 font-mono font-bold text-sm tracking-tighter">VS</span>
             </div>
-            <span className="font-heading font-bold text-xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">
+            <span className="font-heading font-bold text-xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
               Vinay Shanker
             </span>
-          </div>
+          </motion.div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
               {sections.map((section) => (
-                <button
+                <motion.button
                   key={section}
+                  whileHover={{ y: -2 }}
                   onClick={() => scrollTo(section)}
-                  className={`capitalize text-sm font-medium transition-colors hover:text-accent ${activeSection === section ? "text-accent" : "text-foreground"}`}
+                  className={`relative capitalize text-sm font-medium transition-colors hover:text-accent ${activeSection === section ? "text-accent" : "text-foreground"}`}
                 >
                   {section}
-                </button>
+                  {activeSection === section && (
+                    <motion.div layoutId="activeNav" className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full" />
+                  )}
+                </motion.button>
               ))}
               <a
                 href={`mailto:${personalData.email}`}

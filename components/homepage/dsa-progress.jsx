@@ -34,10 +34,14 @@ export default function DsaProgress() {
               <h3 className="text-xl font-bold font-heading mb-6 text-foreground">Topic Progress</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 content-start">
                 {dsaTopics.map((item, index) => (
-                  <div key={index} className="flex justify-between items-center p-2.5 rounded-lg border border-gray-100 dark:border-gray-800 hover:bg-white/5 transition-colors group shadow-sm">
+                  <motion.div 
+                    key={index} 
+                    whileHover={{ scale: 1.05, x: 5 }}
+                    className="flex justify-between items-center p-3 rounded-xl border border-gray-100 dark:border-gray-800 bg-white/5 hover:bg-accent/5 hover:border-accent/30 transition-all group shadow-sm cursor-default"
+                  >
                     <span className="font-medium text-sm text-foreground group-hover:text-accent transition-colors">{item.topic}</span>
                     {getStatusBadge(item.status)}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
