@@ -6,14 +6,14 @@ import { Moon, Sun, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { personalData } from "@/utils/data/personal-data";
 
+const sections = ["about", "services", "projects", "education", "contact"];
+
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const sections = ["about", "skills", "projects", "education", "contact"];
 
   useEffect(() => {
     setMounted(true);
@@ -32,7 +32,7 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [sections]);
+  }, []);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
