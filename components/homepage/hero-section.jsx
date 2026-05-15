@@ -41,7 +41,7 @@ export default function HeroSection() {
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex flex-col items-center justify-center min-h-[90vh]">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
         <motion.div
           variants={containerVariants}
@@ -49,7 +49,7 @@ export default function HeroSection() {
           animate="show"
         >
           <motion.p variants={itemVariants} className="text-secondary font-mono mb-4 text-lg tracking-wide">
-            Hi, my name is
+            Hi, I&apos;m
           </motion.p>
           <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-heading font-extrabold tracking-tight mb-4 text-foreground">
             {personalData.name}.
@@ -57,7 +57,7 @@ export default function HeroSection() {
           <motion.h2 variants={itemVariants} className="text-4xl md:text-6xl font-heading font-bold text-textMuted mb-6 tracking-tight">
             I turn ideas into reliable software.
           </motion.h2>
-          
+
           <motion.div variants={itemVariants} className="h-10 mb-8 flex justify-center items-center">
             <motion.p
               key={titleIndex}

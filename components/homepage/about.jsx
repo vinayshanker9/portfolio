@@ -10,7 +10,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Text Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -23,7 +23,7 @@ export default function About() {
             </h2>
             <div className="text-lg text-textMuted space-y-4 font-sans max-w-2xl leading-relaxed">
               <p>
-                Hello! My name is <span className="text-secondary font-medium">{personalData.name}</span> and I enjoy creating things that live on the internet. My interest in software engineering started back when I decided to try editing custom Tumblr themes — turns out hacking together HTML & CSS taught me a lot about logic and problem-solving!
+                Hello! I&apos;m  <span className="text-secondary font-medium">{personalData.name}</span> and I enjoy creating things that live on the internet. My interest in software engineering started back when I decided to try editing custom Tumblr themes — turns out hacking together HTML & CSS taught me a lot about logic and problem-solving!
               </p>
               <p>
                 Fast-forward to today, and I&apos;ve had the privilege of building <span className="text-accent font-medium">robust Rest APIs with Spring Boot</span> and full-stack platforms using React.js. My main focus these days is building accessible, inclusive products and digital experiences for a variety of clients.
@@ -35,14 +35,14 @@ export default function About() {
           </motion.div>
 
           {/* Image */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 50 }}
             className="flex-1 order-1 md:order-2 flex justify-center md:justify-end w-full max-w-sm md:max-w-md"
           >
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="relative group w-64 md:w-80 aspect-[3/4]"
