@@ -2,6 +2,8 @@ import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import ZoomBlocker from "@/components/zoom-blocker";
+import SmoothScroll from "@/components/smooth-scroll";
+import Preloader from "@/components/preloader";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
@@ -26,6 +28,8 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <ZoomBlocker />
+          <SmoothScroll />
+          <Preloader />
           <div className="relative min-h-screen">
             <div className="relative z-10">{children}</div>
           </div>

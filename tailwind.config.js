@@ -12,11 +12,11 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: "var(--card)",
-        accent: "#6366f1",
-        secondary: "#22d3ee",
+        accent: "#E50914", // Netflix Red
+        secondary: "#B81D24", // Netflix Dark Red
         success: "#22c55e",
         warning: "#f59e0b",
-        muted: "#64748b",
+        muted: "#808080", // Netflix Gray
         textPrimary: "var(--foreground)",
         textMuted: "var(--text-muted)",
       },

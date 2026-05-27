@@ -1,70 +1,32 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MapPin, Github, Linkedin, ArrowRight, Send, X, CheckCircle, AlertCircle } from "lucide-react";
-import emailjs from "@emailjs/browser";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Send, CheckCircle, AlertCircle, HelpCircle, MapPin, Mail, Clock } from "lucide-react";
 import { personalData } from "@/utils/data/personal-data";
-import { InteractiveGlow, FlowingTrails } from "./background-effects";
-
-const CONTAINER = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.12 } },
-};
-
-const ITEM = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 16 } },
-};
-
-const contactLinks = [
-  {
-    id: "email",
-    label: "Email",
-    value: personalData.email,
-    href: `mailto:${personalData.email}`,
-    icon: Mail,
-    color: "#6366f1",
-    glow: "rgba(99,102,241,0.3)",
-    description: "Drop me a message anytime",
-  },
-  {
-    id: "linkedin",
-    label: "LinkedIn",
-    value: "linkedin.com/in/vinay-shanker",
-    href: personalData.linkedIn,
-    icon: Linkedin,
-    color: "#0a66c2",
-    glow: "rgba(10,102,194,0.3)",
-    description: "Let's connect professionally",
-  },
-  {
-    id: "github",
-    label: "GitHub",
-    value: "github.com/vinayshanker9",
-    href: personalData.github,
-    icon: Github,
-    color: "var(--github-color)",
-    colorHex: "#6e7681",
-    glow: "rgba(87,96,106,0.3)",
-    description: "Explore my open-source work",
-  },
-  {
-    id: "location",
-    label: "Location",
-    value: personalData.address,
-    href: null,
-    icon: MapPin,
-    color: "#14b8a6",
-    glow: "rgba(20,184,166,0.3)",
-    description: "Available for remote work worldwide",
-  },
-];
 
 export default function Contact() {
-  const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const options = {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      };
+      const formatter = new Intl.DateTimeFormat("en-US", options);
+      setTime(formatter.format(new Date()));
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -91,7 +53,6 @@ export default function Contact() {
       if (response.ok) {
         setStatus("success");
         setTimeout(() => {
-          setShowForm(false);
           setStatus("idle");
           setFormData({ name: "", email: "", message: "" });
         }, 3000);
@@ -106,202 +67,224 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background relative z-10 w-full mb-10 overflow-hidden">
-      <FlowingTrails color="#6366f1" count={4} />
-      <InteractiveGlow />
+    <section 
+      id="contact" 
+      className="relative py-24 bg-[#141414] text-[#f5f5f7] overflow-visible border-t border-white/5 pb-32"
+    >
+      {/* Dynamic background ambient glows */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#E50914]/5 rounded-full blur-[150px] pointer-events-none -z-10" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          className="text-center mb-16"
-        >
-          <p className="text-secondary font-mono text-sm tracking-widest uppercase mb-3">
-            05. Get In Touch
-          </p>
-          <h2 className="text-3xl md:text-5xl font-heading font-extrabold mb-5">
-            <span className="text-shimmer">Let&apos;s Build Something Together</span>
-          </h2>
-          <p className="text-textMuted text-lg max-w-xl mx-auto leading-relaxed">
-            I&apos;m currently open to new opportunities. Whether you have a project
-            in mind, a question, or just want to say hi — my inbox is always open.
-          </p>
-        </motion.div>
-
-        {/* Contact cards */}
-        <motion.div
-          variants={CONTAINER}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-        >
-          {contactLinks.map(({ id, label, value, href, icon: Icon, color, colorHex, glow, description }) => {
-            // For CSS-variable colors (github), use colorHex for template literals
-            const hexColor = colorHex ?? color;
-            return (
+      <div className="max-w-6xl mx-auto px-4 sm:px-12 relative z-10">
+        
+        {/* Core Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Left Column - Netflix Account Sign-In Form Sheet */}
+          <div className="lg:col-span-6 md:col-span-10 mx-auto w-full">
             <motion.div
-              key={id}
-              variants={ITEM}
-              whileHover={{ y: -8, scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              className="card-shine relative bg-card/40 rounded-2xl p-6 border border-white/5
-                         hover:border-white/15 transition-colors duration-300 group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-black/75 border border-white/10 rounded-md p-8 sm:p-12 shadow-2xl relative"
             >
-              {/* Hover glow */}
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ boxShadow: `0 20px 60px -12px ${glow}` }}
-              />
+              <h2 className="text-3xl font-bold text-white mb-8 font-sans">
+                Sign In
+              </h2>
 
-              {/* Icon */}
-              <motion.div
-                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.15 }}
-                transition={{ duration: 0.35 }}
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 border border-white/10"
-                style={{ backgroundColor: `${hexColor}22` }}
-              >
-                <Icon size={22} style={{ color }} />
-              </motion.div>
-
-              {/* Text */}
-              <p className="text-xs font-mono uppercase tracking-widest mb-1" style={{ color }}>
-                {label}
-              </p>
-              <p className="text-foreground font-semibold text-base mb-1 group-hover:text-shimmer transition-all">
-                {value}
-              </p>
-              <p className="text-textMuted text-sm">{description}</p>
-
-              {/* Link / arrow */}
-              {href ? (
-                <motion.a
-                  href={href}
-                  target={href.startsWith("mailto") ? "_self" : "_blank"}
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 4 }}
-                  className="inline-flex items-center gap-1 mt-4 text-xs font-mono transition-colors"
-                  style={{ color }}
-                >
-                  {href.startsWith("mailto") ? "Send email" : "Open profile"}
-                  <ArrowRight size={12} />
-                </motion.a>
-              ) : (
-                <p className="mt-4 text-xs font-mono text-gray-600">Remote-friendly</p>
-              )}
-
-              {/* Bottom accent line */}
-              <div
-                className="mt-5 h-px w-0 group-hover:w-full rounded-full transition-all duration-500"
-                style={{ background: `linear-gradient(90deg, ${hexColor}, transparent)` }}
-              />
-            </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {/* CTA & Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="mt-14 max-w-lg mx-auto w-full"
-        >
-          <AnimatePresence mode="wait">
-            {!showForm ? (
-              <motion.div
-                key="button"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-                className="flex justify-center"
-              >
-                <motion.button
-                  onClick={() => setShowForm(true)}
-                  whileHover={{ scale: 1.06, boxShadow: "0 0 36px rgba(99,102,241,0.6)" }}
-                  whileTap={{ scale: 0.96 }}
-                  className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-white
-                             font-semibold rounded-full shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all"
-                >
-                  <Mail size={18} />
-                  Say Hello
-                </motion.button>
-              </motion.div>
-            ) : (
-              <motion.form
-                key="form"
-                initial={{ opacity: 0, height: 0, y: 20 }}
-                animate={{ opacity: 1, height: "auto", y: 0 }}
-                exit={{ opacity: 0, height: 0, y: -20 }}
-                transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}
-                onSubmit={handleSubmit}
-                className="bg-card/40 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md relative overflow-hidden"
-              >
-                <button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-                >
-                  <X size={20} />
-                </button>
+              <form onSubmit={handleSubmit} className="space-y-6">
                 
-                <h3 className="text-xl font-semibold mb-6 text-shimmer text-center">Send a Message</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your Name"
-                      className="w-full bg-background/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-accent/50 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Your Email"
-                      className="w-full bg-background/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-accent/50 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <textarea
-                      name="message"
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Your Message"
-                      rows={4}
-                      className="w-full bg-background/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-accent/50 transition-colors resize-none"
-                    />
-                  </div>
-                  
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    disabled={status === "submitting" || status === "success"}
-                    className="w-full py-3 bg-accent text-white rounded-xl font-medium flex items-center justify-center gap-2 transition-colors hover:bg-accent/90 disabled:opacity-70"
-                  >
-                    {status === "idle" && <><Send size={18} /> Send Message</>}
-                    {status === "submitting" && <span className="animate-pulse">Sending...</span>}
-                    {status === "success" && <><CheckCircle size={18} className="text-green-400" /> Sent Successfully!</>}
-                    {status === "error" && <><AlertCircle size={18} className="text-red-400" /> Error Sending</>}
-                  </motion.button>
+                {/* Float input: Name */}
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="w-full bg-[#333] text-white rounded px-5 pt-6 pb-2 border-b-2 border-transparent focus:border-[#E50914] outline-none transition-colors font-sans text-sm block peer"
+                  />
+                  <label className="absolute text-xs text-[#808080] left-5 top-2 transition-all pointer-events-none peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:text-xs peer-focus:top-2">
+                    Your Name
+                  </label>
                 </div>
-              </motion.form>
-            )}
-          </AnimatePresence>
-        </motion.div>
+
+                {/* Float input: Email */}
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="w-full bg-[#333] text-white rounded px-5 pt-6 pb-2 border-b-2 border-transparent focus:border-[#E50914] outline-none transition-colors font-sans text-sm block peer"
+                  />
+                  <label className="absolute text-xs text-[#808080] left-5 top-2 transition-all pointer-events-none peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:text-xs peer-focus:top-2">
+                    Email Address
+                  </label>
+                </div>
+
+                {/* Float input: Message */}
+                <div className="relative">
+                  <textarea
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder=" "
+                    rows={4}
+                    className="w-full bg-[#333] text-white rounded px-5 pt-6 pb-2 border-b-2 border-transparent focus:border-[#E50914] outline-none transition-colors font-sans text-sm block peer resize-none"
+                  />
+                  <label className="absolute text-xs text-[#808080] left-5 top-2 transition-all pointer-events-none peer-placeholder-shown:text-sm peer-placeholder-shown:top-4 peer-focus:text-xs peer-focus:top-2">
+                    Enter Message
+                  </label>
+                </div>
+
+                {/* Submit Action Button - Glowing Red */}
+                <button
+                  type="submit"
+                  disabled={status === "submitting" || status === "success"}
+                  className="w-full py-3.5 bg-[#E50914] hover:bg-[#b81d24] text-white rounded font-sans font-bold text-base tracking-wide transition-colors duration-200 cursor-pointer shadow-lg disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {status === "idle" && <span>Submit Message</span>}
+                  {status === "submitting" && <span className="animate-pulse">Connecting...</span>}
+                  {status === "success" && (
+                    <>
+                      <span>Sent Successfully</span>
+                      <CheckCircle size={16} className="text-white" />
+                    </>
+                  )}
+                  {status === "error" && (
+                    <>
+                      <span>Failed to Send</span>
+                      <AlertCircle size={16} className="text-white" />
+                    </>
+                  )}
+                </button>
+
+                {/* Form Footer Helpers */}
+                <div className="flex items-center justify-between text-xs text-[#b3b3b3] pt-2">
+                  <label className="flex items-center gap-1.5 cursor-pointer">
+                    <input type="checkbox" defaultChecked className="rounded accent-[#E50914]" />
+                    <span>Remember me</span>
+                  </label>
+                  <a href="#projects" className="hover:underline text-white">Need help?</a>
+                </div>
+
+                {/* Netflix-style signup callout */}
+                <div className="pt-8 border-t border-white/10 space-y-2 text-xs">
+                  <p className="text-[#808080]">
+                    New to Vinay&apos;s portfolio?{" "}
+                    <span 
+                      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                      className="text-white hover:underline cursor-pointer"
+                    >
+                      Explore the site now.
+                    </span>
+                  </p>
+                  <p className="text-[#808080] text-[10px] leading-relaxed">
+                    This page is protected by Google recaptcha validation protocols to verify you are a prospective client and not a bot.
+                  </p>
+                </div>
+
+              </form>
+            </motion.div>
+          </div>
+
+          {/* Right Column - Netflix FAQ & Account Settings Sidebar */}
+          <div className="lg:col-span-6 space-y-8">
+            <div className="mb-4">
+              <span className="text-[#808080] font-sans text-xs tracking-[0.2em] font-extrabold uppercase block mb-1">
+                CONTACT METRIC
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-heading font-black tracking-tight uppercase text-white">
+                Membership & FAQs
+              </h3>
+            </div>
+
+            {/* Questions accordions grid */}
+            <div className="space-y-4 font-sans text-sm">
+              
+              {/* Location Block */}
+              <div className="bg-[#181818] border border-white/5 p-5 rounded-md hover:border-white/15 transition-all">
+                <div className="flex items-center gap-3 text-white font-bold mb-2">
+                  <MapPin size={16} className="text-[#E50914]" />
+                  <span>Where is the office headquartered?</span>
+                </div>
+                <p className="text-xs text-[#b3b3b3] leading-relaxed pl-7">
+                  Operating remotely out of Bengaluru, Karnataka, India. Open to distributed client requests worldwide.
+                </p>
+              </div>
+
+              {/* Email Block */}
+              <div className="bg-[#181818] border border-white/5 p-5 rounded-md hover:border-white/15 transition-all">
+                <div className="flex items-center gap-3 text-white font-bold mb-2">
+                  <Mail size={16} className="text-[#E50914]" />
+                  <span>What is the direct support channel?</span>
+                </div>
+                <p className="text-xs text-[#b3b3b3] leading-relaxed pl-7">
+                  You can stream queries directly to{" "}
+                  <a href={`mailto:${personalData.email}`} className="text-white hover:underline font-bold">
+                    {personalData.email}
+                  </a>
+                  . Replies are guaranteed within 1 business cycle.
+                </p>
+              </div>
+
+              {/* Time Block */}
+              <div className="bg-[#181818] border border-white/5 p-5 rounded-md hover:border-white/15 transition-all">
+                <div className="flex items-center gap-3 text-white font-bold mb-2">
+                  <Clock size={16} className="text-[#E50914]" />
+                  <span>Stream Timezone & Hours?</span>
+                </div>
+                <p className="text-xs text-[#b3b3b3] leading-relaxed pl-7">
+                  Synchronized with IST (UTC+5:30) Bangalore. Current Local Time: <span className="text-white font-bold">{time}</span>.
+                </p>
+              </div>
+
+              {/* Quick links block */}
+              <div className="bg-[#181818] border border-white/5 p-5 rounded-md hover:border-white/15 transition-all">
+                <div className="flex items-center gap-3 text-white font-bold mb-2">
+                  <HelpCircle size={16} className="text-[#E50914]" />
+                  <span>Digital Profiles Setup?</span>
+                </div>
+                
+                <div className="flex flex-wrap gap-2 pt-2 pl-7 font-mono text-[10px]">
+                  <a 
+                    href={personalData.linkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-[#E50914]/20 text-[#e5e5e5] px-3 py-1.5 rounded transition-all"
+                  >
+                    LINKEDIN // VINAY-SHANKER
+                  </a>
+                  <a 
+                    href={personalData.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-[#E50914]/20 text-[#e5e5e5] px-3 py-1.5 rounded transition-all"
+                  >
+                    GITHUB // VINAYSHANKER9
+                  </a>
+                  <a 
+                    href={personalData.leetcode}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-[#E50914]/20 text-[#e5e5e5] px-3 py-1.5 rounded transition-all"
+                  >
+                    LEETCODE // VINAYSHANKER_9
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </section>
   );
