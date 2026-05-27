@@ -23,7 +23,7 @@ export const projectsData = [
     description: "AI-powered study app that allows users to chat with documents, generate quizzes, explain code, and summarize videos using LLMs and vector embeddings.",
     tools: ["React", "FastAPI", "Supabase", "Groq", "FastEmbed", "Python", "Llama 3"],
     badge: "AI Application",
-    github: "https://github.com/vinayshanker9/Solo-Bot",
+    github: "https://github.com/vinayshanker9/Solo-Tutor",
     demo: "https://solobot.netlify.app/"
   }
 ];
