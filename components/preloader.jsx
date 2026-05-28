@@ -205,15 +205,7 @@ export default function Preloader() {
               className="absolute h-full w-[4px] bg-gradient-to-t from-transparent via-[#E50914]/40 to-transparent pointer-events-none z-0 blur-[8px]"
             />
 
-            {/* Bottom cinematic meta tag */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.8, 0.8, 0] }}
-              transition={{ delay: 0.1, duration: 1.4 }}
-              className="absolute bottom-12 font-mono text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-[0.35em]"
-            >
-              NETFLIX PORTFOLIO PRESENTS // TUDUM INTRO
-            </motion.p>
+
 
           </div>
         </motion.div>
