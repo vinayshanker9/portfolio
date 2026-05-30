@@ -41,11 +41,11 @@ export default function HeroSection() {
             <div className="flex flex-wrap items-center gap-3 mb-6 font-mono text-xs uppercase tracking-widest text-[#e5e5e5]">
               <div className="flex items-center gap-1.5 bg-[#E50914] text-white px-2 py-0.5 rounded-sm font-bold text-[10px] tracking-wide shadow-sm shadow-[#E50914]/30 animate-pulse">
                 <Award size={10} />
-                <span>TOP 1% DEVELOPER</span>
+                <span>FULL STACK DEVELOPER</span>
               </div>
               <span className="text-[#808080]">|</span>
               <span className="text-[#e5e5e5] font-semibold text-[10px] sm:text-xs">
-                B.TECH ISE {"//"} SPRING BOOT & COGNITIVE AI ENGINEER
+                SPRING BOOT & REACT / NEXT.JS
               </span>
             </div>
 
