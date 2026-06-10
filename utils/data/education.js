@@ -10,7 +10,6 @@ export const educationData = [
     id: 2,
     degree: "Higher Secondary Education (12th Grade)",
     college: "Bharatiy Vidya Bhavan's\nBhimavaram, Andhra Pradesh",
-    year: "2021 – 2023",
-    score: "Percentage: 83%"
+    year: "2021 – 2023"
   }
 ];

@@ -22,7 +22,6 @@ export default function Education() {
       title: "Higher Secondary Education (12th Grade)",
       college: "Bharatiya Vidya Bhavan's, Bhimavaram",
       year: "2021 – 2023",
-      score: "Percentage: 83%",
       rating: "UA 16+",
       match: "95% Match",
       episodesCount: "2 Academic Years",
@@ -122,14 +121,16 @@ export default function Education() {
                     <span>{season.year}</span>
                   </div>
 
-                  <div className="bg-white/5 border border-white/10 rounded px-4 py-2 text-center">
-                    <span className="block text-[8px] text-[#808080] font-extrabold uppercase tracking-widest mb-0.5">
-                      FINAL GRADE
-                    </span>
-                    <span className="text-white font-bold text-sm tracking-wide">
-                      {season.score}
-                    </span>
-                  </div>
+                  {season.score && (
+                    <div className="bg-white/5 border border-white/10 rounded px-4 py-2 text-center">
+                      <span className="block text-[8px] text-[#808080] font-extrabold uppercase tracking-widest mb-0.5">
+                        FINAL GRADE
+                      </span>
+                      <span className="text-white font-bold text-sm tracking-wide">
+                        {season.score}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
               </div>
