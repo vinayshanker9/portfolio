@@ -24,7 +24,7 @@ export default function Education() {
       rating: "UA 16+",
       match: "95% Match",
       episodesCount: "2 Academic Years",
-      overview: "Deep specialization in analytical mathematics, mechanics physics, and fundamental computer science syntax (C++ / Java object-oriented principles). Laid a strong foundation for advanced system designs.",
+      overview: "Deep specialization in analytical mathematics, mechanics physics, and fundamental computer science syntax (Python / Java object-oriented principles). Laid a strong foundation for advanced system designs.",
       highlights: ["Advanced Mathematics", "Physics & Mechanics", "OOP Programming Syntax"]
     }
   ];
