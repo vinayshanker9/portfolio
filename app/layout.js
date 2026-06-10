@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <ZoomBlocker />
           <SmoothScroll />
-          <Preloader />
+          {/* <Preloader /> */}
           <div className="relative min-h-screen">
             <div className="relative z-10">{children}</div>
           </div>
