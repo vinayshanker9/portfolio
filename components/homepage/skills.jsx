@@ -84,17 +84,12 @@ export default function Skills() {
             return (
               <motion.div
                 key={genre.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ y: -10, scale: 1.05, zIndex: 30 }}
                 whileTap={{ scale: 0.96 }}
                 transition={{ 
                   type: "spring", 
                   stiffness: 400, 
-                  damping: 24, 
-                  delay: index * 0.1,
-                  opacity: { duration: 0.35, delay: index * 0.1 } 
+                  damping: 24
                 }}
                 className="bg-[#181818] border border-white/5 rounded-md overflow-hidden shadow-2xl group transition-colors duration-150 relative flex flex-col justify-between hover:border-[#E50914]/80 hover:shadow-[0_15px_30px_rgba(229,9,20,0.25)] cursor-pointer"
               >

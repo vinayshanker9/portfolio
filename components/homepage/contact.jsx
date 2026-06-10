@@ -81,11 +81,7 @@ export default function Contact() {
           
           {/* Left Column - Netflix Account Sign-In Form Sheet */}
           <div className="lg:col-span-6 md:col-span-10 mx-auto w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <div
               className="bg-black/75 border border-white/10 rounded-md p-8 sm:p-12 shadow-2xl relative"
             >
               <h2 className="text-3xl font-bold text-white mb-8 font-sans">
@@ -190,7 +186,7 @@ export default function Contact() {
                 </div>
 
               </form>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right Column - Netflix FAQ & Account Settings Sidebar */}

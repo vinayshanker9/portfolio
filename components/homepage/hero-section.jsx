@@ -80,33 +80,22 @@ export default function HeroSection() {
 
             {/* Headline Title */}
             <div className="max-w-3xl mb-6">
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-5xl sm:text-7xl md:text-8xl font-heading font-black tracking-tighter leading-[0.9] uppercase text-white shadow-sm"
-              >
+              <h1 className="text-5xl sm:text-7xl md:text-8xl font-heading font-black tracking-tighter leading-[0.9] uppercase text-white shadow-sm">
                 VINAY SHANKER
-              </motion.h1>
+              </h1>
             </div>
 
             {/* Description Text - Styled exactly like Netflix description block */}
             <div className="max-w-2xl mb-8">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+              <p
                 className="text-base sm:text-lg md:text-xl text-[#e5e5e5] font-sans leading-relaxed tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
               >
                 Spring Boot backends. React client interfaces. Enterprise AI integrations. Class of 2027 Information Science student specialized in building enterprise-grade, cognitive server components, intelligent microservices, and reactive data pipelines.
-              </motion.p>
+              </p>
             </div>
 
             {/* Netflix Iconic CTA Buttons: ▶ Play (Contact) and ℹ More Info (Resume) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+            <div
               className="flex flex-wrap gap-4 mb-12 sm:mb-16"
             >
               {/* Play Button - scrolls to Contact */}
@@ -128,7 +117,7 @@ export default function HeroSection() {
                 <Info size={20} />
                 <span>More Info</span>
               </a>
-            </motion.div>
+            </div>
 
             {/* Bottom Technical Badges and Metadata */}
             <div className="pt-6 border-t border-white/10 w-full flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 font-mono text-[10px] sm:text-xs text-[#808080] tracking-wider">
@@ -157,10 +146,7 @@ export default function HeroSection() {
 
           {/* Right Column: Premium Netflix-style Movie Character Poster showing Profile Photo */}
           <div className="lg:col-span-4 flex justify-center items-center w-full mt-10 lg:mt-0">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+            <div
               className="relative w-[280px] h-[380px] sm:w-[320px] sm:h-[440px] bg-[#1a1a1a] rounded border border-white/10 shadow-[0_15px_35px_rgba(0,0,0,0.8)] hover:border-[#E50914]/40 hover:shadow-[#E50914]/15 transition-all duration-500 group overflow-hidden"
             >
               {/* Profile Photo as key show poster */}
@@ -187,7 +173,7 @@ export default function HeroSection() {
                   SEASON 2
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
         </div>

@@ -53,17 +53,12 @@ export default function Education() {
           {seasons.map((season, index) => (
             <motion.div
               key={season.id}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
               whileHover={{ scale: 1.025, y: -4, zIndex: 10 }}
               whileTap={{ scale: 0.985 }}
               transition={{ 
                 type: "spring", 
                 stiffness: 400, 
-                damping: 24, 
-                delay: index * 0.15,
-                opacity: { duration: 0.35, delay: index * 0.15 } 
+                damping: 24
               }}
               className="bg-[#181818] border border-white/5 rounded-lg p-6 sm:p-8 shadow-2xl relative overflow-hidden group hover:border-[#E50914]/50 hover:shadow-[0_12px_24px_rgba(229,9,20,0.15)] transition-colors duration-150 cursor-pointer"
             >
