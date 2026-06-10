@@ -3,8 +3,7 @@ export const educationData = [
     id: 1,
     degree: "B.Tech in Information Science and Engineering",
     college: "Jain University, Bangalore",
-    year: "2023 – 2027",
-    score: "CGPA: 8.3/10"
+    year: "2023 – 2027"
   },
   {
     id: 2,

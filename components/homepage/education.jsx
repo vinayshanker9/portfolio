@@ -10,7 +10,6 @@ export default function Education() {
       title: "B.Tech in Information Science & Engineering",
       college: "Jain University, Bangalore",
       year: "2023 – 2027",
-      score: "CGPA: 8.3/10",
       rating: "UA 18+",
       match: "99% Match",
       episodesCount: "8 Semesters",
